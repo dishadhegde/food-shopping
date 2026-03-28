@@ -1,0 +1,20 @@
+name: Artifact Demo
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Compile C code
+        run: gcc add.c -o add
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiled-program
+          path: add
